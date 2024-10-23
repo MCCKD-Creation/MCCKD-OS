@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МССКД OS Лаунчер</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            color: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .launcher {
+            width: 450px;
+            background-color: #282c34;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .launcher:hover {
+            transform: translateY(-10px);
+        }
+
+        .launcher-header {
+            background: linear-gradient(145deg, #6a3093, #a044ff);
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #444;
+        }
+
+        .tab-menu {
+            display: flex;
+            justify-content: space-between;
+            background-color: #1e1e24;
+            padding: 10px 0;
+        }
+
+        .tab-menu button {
+            flex: 1;
+            background: none;
+            border: none;
+            color: #888;
+            padding: 15px 0;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .tab-menu button:hover,
+        .tab-menu button.active {
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .tab-content p {
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        .launcher-footer {
+            background-color: #333;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        .launcher-footer a {
+            color: #a044ff;
+            text-decoration: none;
+        }
+
+        .launcher-footer a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="launcher">
+    <div class="launcher-header">
+        MCCKD OS
+    </div>
+
+    <div class="tab-menu">
+        <button id="news-tab" onclick="openTab('news')">Новости</button>
+        <button id="info-tab" onclick="openTab('info')">Информация</button>
+        <button id="settings-tab" onclick="openTab('settings')">Настройки</button>
+        <button id="account-tab" onclick="openTab('account')">Аккаунт</button>
+        <button id="os-versions-tab" onclick="openTab('os-versions')">Версии ОС</button>
+    </div>
+
+    <div id="news" class="tab-content active">
+        <h2>Новости</h2>
+        <p><strong>Добро пожаловать в лаунчер!</strong> Мы создали Лаунчер, чтобы это было удобно для вас! Выбирайте версии ОС и следите за обновлениями!</p>
+    </div>
+
+    <div id="info" class="tab-content">
+        <h2>Информация</h2>
+        <p><strong>Вышла версия ОС MCCKD Vistion OS 1/0 94/32!</strong> Теперь она доступна для загрузки и установки с новыми функциями и улучшениями.</p>
+    </div>
+
+    <div id="settings" class="tab-content">
+        <h2>Настройки</h2>
+        <p>Пользовательские параметры и настройки системы можно изменить здесь.</p>
+    </div>
+
+    <div id="account" class="tab-content">
+        <h2>Аккаунт</h2>
+        <p>Управляйте своими учетными данными и настройками безопасности.</p>
+    </div>
+
+    <div id="os-versions" class="tab-content">
+        <h2>Версии ОС</h2>
+        <p>Просмотрите доступные версии MCCKD OS и подробную информацию о каждой из них.</p>
+    </div>
+
+    <div class="launcher-footer">
+        &copy; 2024 <a href="#">MCCKD OS Visition</a>. Все права защищены.
+    </div>
+</div>
+
+<script>
+    function openTab(tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
+        }
+        document.getElementById(tabName).classList.add("active");
+
+        var buttons = document.querySelectorAll('.tab-menu button');
+        buttons.forEach(button => button.classList.remove('active'));
+        document.getElementById(tabName + '-tab').classList.add('active');
+    }
+</script>
+
+</body>
+</html>
